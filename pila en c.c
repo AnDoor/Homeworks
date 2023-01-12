@@ -109,7 +109,7 @@ printf("Dia:");
 scanf("%d",&pila[final].fecha_nacimiento.dia);
 printf("\nMes:");
 scanf("%d",&pila[final].fecha_nacimiento.mes);
-printf("\nAño:");
+printf("\nAÃ±o:");
 scanf("%d",&pila[final].fecha_nacimiento.anio);
 printf("\n Numero telefonico:");
 scanf("%ld", &pila[final].telefono);
@@ -119,11 +119,16 @@ gets(pila[final].sexo);
 printf("\n");
 			puts("Desea agregar otro elemento? [Y] [N]");
 			opc =getch();
-			
+			if (final == LONG){
+				puts("\tPILA LLENA!");
+				clrscr();
+				break;
+				
+			}
 		} while(opc == 'Y' || opc == 'y');
 	}
 }
-/*Funcion que crea la pila a base de 20 espacion*/
+/*Funcion que crea la pila a base de 20 espacios libre*/
 int crearpilar(){
 	
 int i;
@@ -148,7 +153,7 @@ printf("Dia:");
 scanf("%d",&pila[i].fecha_nacimiento.dia);
 printf("\nMes:");
 scanf("%d",&pila[i].fecha_nacimiento.mes);
-printf("\nAño:");
+printf("\nAÃ±o:");
 scanf("%d",&pila[i].fecha_nacimiento.anio);
 printf("\n Numero telefonico:");
 scanf("%ld", &pila[i].telefono);
@@ -168,7 +173,7 @@ printf("\n");
 	  continue;
         }
 } else{
-	textcolor(RED);
+	
 printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");	
     return -1;
     
@@ -177,7 +182,7 @@ puts("la pila se ha llenado con excito!");
 system("pause");
 clrscr();
 }
-
+/*Funcion que elimina un elemento de la pila*/
 void desapilar(){ 
 	
 	if(final>=0){
@@ -192,6 +197,7 @@ printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");
 clrscr();
 }
 
+/*Funcion que muestra lo que tiene la pila*/
 void mostrarPILA(){
 	
 	int i;
