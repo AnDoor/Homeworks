@@ -1,92 +1,87 @@
+
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 
-#define LONG 3
+#define LONG 3 //define el espacio prederteminado de la pila
+
+//estructura de datos sobre la fecha y que va anidada a la estructura principal
 struct Fecha{
 	int dia,mes,anio;
 	
 };
+//estrcutura de datos principal de la pila
 struct persona {
- int cedula; 
- char nombre[50]; 
- char apellido[50]; 
- char sexo[1]; 
- struct Fecha fecha_nacimiento; 
- long int telefono; 
+	int cedula; 
+	char nombre[50]; 
+	char apellido[50]; 
+	char sexo[1]; 
+	struct Fecha fecha_nacimiento; 
+	long long int telefono; 
 };
 
 int final= -1;
 struct persona  pila[LONG];
 
 /*prototipo de funciones */
-int crearpilar();
-void apilar();
-void desapilar();
-void mostrarPILA();
-void menuMAIN();
+int crearpilar();//funcion que se encarga de crear una pila a base de su espacio prederteminado (LONG)
+void apilar();//funcion que se encarga de agregar un elemnto a la pila
+void desapilar();//funcion que se encarga de eliminar un elemento de la pila
+void mostrarPILA();//funcion que se encarga de mostrar los elementos de la pila
+void menuMAIN(); //funcion que se encarga de mostrar un menu principal
 
 /*Funcion inicial*/
 int main (void){
 
-textcolor (LIGHTGREEN);
+
 menuMAIN();
 
     return 0;
 
 }
-/*Funcion encargada del menu principal*/
+/*inicio de la funcion encargada del menu principal*/
 void menuMAIN(){
-	char opcion;
+	int opcion;
 	do{
-	
-	puts("\t\tMENU");
-	puts("\t[1] CREAR LA PILA\n");
-	puts("\t[2] APILAR\n");
-	puts("\t[3] DESAPILAR\n");
-	puts("\t[4] MOSTRAR LO QUE TIENE LA PILA\n");
-	puts("\t[5] SALIR\n");
-	printf("\t->");
- opcion = getch();
-	
+	printf("\t\tMENU\n\t[1] CREAR LA PILA\n\t[2] APILAR\n\t[3] DESAPILAR\n\t[4] MOSTRAR LO QUE TIENE LA PILA\n\t[5] SALIR\n\t->");
+    scanf("%d",&opcion);
+	fflush(stdin);
+	system("cls");
 	switch(opcion){
 		
-		case '1':{
-			clrscr();
+		case 1:{
 			crearpilar();
 			break;
 		}
 		
-		case '2':{
-		clrscr();
+		case 2:{
 		apilar();
 			break;
 		}
-		case '3':{
-			clrscr();
+		case 3:{
 			desapilar();
 			
 			break;
 		}
-		case '4':{
-			clrscr();
+		case 4:{
 			mostrarPILA();
 			break;
 			
 	}
-	case '5':{
+	case 5:{
 		exit(-1);
+
 		break;
 	}
 	default:{
-		puts("Opcion incorrecta");
-		
+		puts("Opcion incorrecta");		
+		system("pause");
+		system("cls");
 		break;
 	}
-}} while (opcion == '1' || opcion == '2' || opcion == '3' || opcion == '4');
-}
+}} while (opcion);
+} //Se termina la funcion del menu inicial
 
-/*Funcion que agrega un nuevo elemento a la pila*/
+/*inicio de la funcion que agrega un nuevo elemento a la pila*/
 void apilar(){
 	
 	char opc;
@@ -94,78 +89,73 @@ void apilar(){
 	if (final<=LONG){
 		do{
 			final++;
-			
-puts("\tINSERTE LA INFORMACION DE LAS PERSONAS");
-printf("Nombre:");
-gets(pila[final].nombre);
-printf("\n");
-printf("Apellido:");
-gets(pila[final].apellido);
-printf("\n");
-printf("Cedula:");
-scanf("%d", &pila[final].cedula);
-printf("Fecha de nacimiento\n");
-printf("Dia:");
-scanf("%d",&pila[final].fecha_nacimiento.dia);
-printf("\nMes:");
-scanf("%d",&pila[final].fecha_nacimiento.mes);
-printf("\nAño:");
-scanf("%d",&pila[final].fecha_nacimiento.anio);
-printf("\n Numero telefonico:");
-scanf("%ld", &pila[final].telefono);
-printf("\n\t\t GENERO \n Masculino [M] \t Femenino [F]  \t Otro. [X]\n->");
-fflush(stdin);
-gets(pila[final].sexo);
-printf("\n");
+			printf("\tINSERTE LA INFORMACION DE LA PERSONA\nNombre:");
+			gets(pila[final].nombre);
+			printf("\nApellido:");
+			gets(pila[final].apellido);
+			printf("\nCedula:");
+			scanf("%d", &pila[final].cedula);
+			printf("\nFecha de nacimiento\nDia:");
+			scanf("%d",&pila[final].fecha_nacimiento.dia);
+			printf("\nMes:");
+			scanf("%d",&pila[final].fecha_nacimiento.mes);
+			printf("\nAnio:");
+			scanf("%d",&pila[final].fecha_nacimiento.anio);
+			printf("\nNumero telefonico:");
+			scanf("%lld", &pila[final].telefono);
+			printf("\n\t\t GENERO \n Masculino [M] \t Femenino [F]  \t Otro. [X]\n->");
+			fflush(stdin);
+			gets(pila[final].sexo);
+			printf("\n");
 			puts("Desea agregar otro elemento? [Y] [N]");
-			opc =getch();
+			scanf("%c",&opc);
 			if (final == LONG){
 				puts("\tPILA LLENA!");
-				clrscr();
+				
 				break;
 				
+			} else{
+			
 			}
 		} while(opc == 'Y' || opc == 'y');
 	}
+		system("pause");
+				system("cls");
 }
-/*Funcion que crea la pila a base de 20 espacios libre*/
+
+/*inicio de la funcion que crea la pila a base de 20 espacios libre*/
 int crearpilar(){
 	
-int i;
+int i;//variable de inicio e incremento del bucle for
 char opcion;
 
 if ( final <LONG){
 
     puts("\t\t LA PILA SE PUEDE LLENAR\n\t--------------------------------------------");
-        for (i=0; i<LONG && final<LONG; i++ ){
+    for (i=0; i<LONG && final<LONG; i++ ){
+		printf("\tINSERTE LA INFORMACION DE LA PERSONA\nNombre:");
+		gets(pila[i].nombre);
+		printf("\nApellido:");
+		gets(pila[i].apellido);
+		printf("\nCedula:");
+		scanf("%d", &pila[i].cedula);
+		printf("\nFecha de nacimiento\nDia:");
+		scanf("%d",&pila[i].fecha_nacimiento.dia);
+		printf("\nMes:");
+		scanf("%d",&pila[i].fecha_nacimiento.mes);
+		printf("\nAnio:");
+		scanf("%d",&pila[i].fecha_nacimiento.anio);
+		printf("\nNumero telefonico:");
+		scanf("%lld", &pila[i].telefono);
+		printf("\n\t\t GENERO \n Masculino [M] \t Femenino [F]  \t Otro. [X]\n->");
+		fflush(stdin);
+		gets(pila[i].sexo);
+		printf("\n");
 
-puts("\tINSERTE LA INFORMACION DE LAS PERSONAS");
-printf("Nombre:");
-gets(pila[i].nombre);
-printf("\n");
-printf("Apellido:");
-gets(pila[i].apellido);
-printf("\n");
-printf("Cedula:");
-scanf("%d", &pila[i].cedula);
-printf("Fecha de nacimiento\n");
-printf("Dia:");
-scanf("%d",&pila[i].fecha_nacimiento.dia);
-printf("\nMes:");
-scanf("%d",&pila[i].fecha_nacimiento.mes);
-printf("\nAño:");
-scanf("%d",&pila[i].fecha_nacimiento.anio);
-printf("\n Numero telefonico:");
-scanf("%ld", &pila[i].telefono);
-printf("\n\t\t GENERO \n Masculino [M] \t Femenino [F]  \t Otro. [X]\n->");
-fflush(stdin);
-gets(pila[i].sexo);
-printf("\n");
-
- final++;
+ 		final++;
  
  puts("Desea limitar la pila?  [Y] [N]");
- opcion=getch();
+ scanf("%c",&opcion);
  
       if (opcion == 'Y' || opcion == 'y'){
       	break;
@@ -179,10 +169,11 @@ printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");
     
 }
 puts("la pila se ha llenado con excito!");
-system("pause");
-clrscr();
-}
-/*Funcion que elimina un elemento de la pila*/
+ 	system("pause");
+	system("cls");
+}//Fin de la funcion para crear la pila
+
+/*inicio de la funcion que elimina un elemento de la pila*/
 void desapilar(){ 
 	
 	if(final>=0){
@@ -194,18 +185,18 @@ void desapilar(){
 printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");	
 	}
 	system("pause");
-clrscr();
-}
+	system("cls");
+}//fin de la funcion que elimina un elemento de la pila
 
-/*Funcion que muestra lo que tiene la pila*/
+/*inicio de la funcion que muestra lo que tiene la pila*/
 void mostrarPILA(){
 	
-	int i;
+	int i; //variable de inicio e incremento del bucle for
 	
 	if (final ==-1){
 printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");	
 			system("pause");
-			clrscr();
+				system("cls");
 	} else {
 		
 		for (i=0; i<final+1; i++){
@@ -214,9 +205,10 @@ printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");
 			printf("Genero: %s\n",pila[i].sexo);
 			printf("Fecha de nacimiento: %d/%d/%d\n",pila[i].fecha_nacimiento.dia,pila[i].fecha_nacimiento.mes,pila[i].fecha_nacimiento.anio);
 			printf("Cedula: %d\n",pila[i].cedula);
-			printf("Numero telefonico: %ld\n",pila[i].telefono);
+			printf("Numero telefonico: %lld\n",pila[i].telefono);
 		}
-		
+		system("pause");
+				system("cls");
 	}
 		
-}
+}//fin de la funcion que muestra los elementos de la pila
