@@ -7,12 +7,6 @@ El programa puede realizar las siguientes funciones:
  -Eliminar un empleado (Se elimina el ultimo trabajador agregado a la pila).
  -Mostrar la cantidad de empleados y sus datos que fueron agregados a la pila.
  -Limitar la cantidad de la pila si la persona lo desea.
---------------------------------------------------------------------------------------------------------------------------------------------------
-                                               Tecnicas de programacion II
-                                                      SECCION 02
-                                                Enviado el: 14/01/2022
-Alumnos.
-Andrew Puerta V-30857308
-Yorman Balan V-31782211
+
 
 
