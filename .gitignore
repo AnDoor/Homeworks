@@ -11,6 +11,10 @@
 *.gch
 *.pch
 
+pila en c.exe
+.gitignore
+a.exe
+
 # Compiled Dynamic libraries
 *.so
 *.dylib
