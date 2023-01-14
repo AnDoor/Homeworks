@@ -1,3 +1,7 @@
+/* Tecnica de programacion II / SECCION 02
+	Alumnos: Puerta Andrew 30957308
+         	 Balan Yorman  31782211
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -96,6 +100,17 @@ void menuMAIN()
 	} while (opcion);
 } // Se termina la funcion del menu inicial
 
+
+/*
+***************************************************************************
+*                               apilar                                    *
+***************************************************************************
+* Esta funcion se encarga de agregar un elemento nuevo a la pila uno por  *
+* uno, tambien pregunta si el usuario quiere seguir agregando y cuando la *
+* pila llegue a su cantidad maxima se mostrara un mensaje como aviso.     *
+***************************************************************************
+*/
+
 /*inicio de la funcion que agrega un nuevo elemento a la pila*/
 void apilar()
 {
@@ -177,7 +192,16 @@ void apilar()
 	}
 }
 
-/*inicio de la funcion que crea la pila a base de 20 espacios libre*/
+/*
+***************************************************************************
+*                               crearpilar                                *
+***************************************************************************
+* Esta funcion se encarga de crear una nueva pila con un almacenamiento   *
+* prederteminado con un espacio de 20 espacios en la pila.Tambien pregunta*
+* si queremos limitar la cantidad de la pila o no y muestra un mensaje    *
+* cuando la pila se haya llenado.                                         *
+***************************************************************************
+*/
 int crearpilar()
 {
 
@@ -258,6 +282,16 @@ int crearpilar()
 	system("cls");
 } // Fin de la funcion para crear la pila
 
+/*
+***************************************************************************
+*                               desapilar                                 *
+***************************************************************************
+* Esta funcion se encarga de eliminar el ultimo elemento agregado a la    *
+* pila,tambien nos muestra un mensaje cuando la pila se encuentra vacia   *
+* y la queramos desapilar.                                                *
+***************************************************************************
+*/
+
 /*inicio de la funcion que elimina un elemento de la pila*/
 void desapilar()
 {
@@ -277,6 +311,18 @@ void desapilar()
 	system("pause");
 	system("cls");
 } // fin de la funcion que elimina un elemento de la pila
+
+/*
+***************************************************************************
+*                               mostrarPILA                               *
+***************************************************************************
+* Esta funcion se encarga de mostrar en patalla todos los elementos       *
+* que hemos introducido a la pila. Si la pila se encuentra vacia y quere- *
+* mos mostrar los elementos, nos saldra un mensaje de error avizandonos   *
+* que la pila se encuntra vacia y debemos llenarla para que esta funcion  *
+* se puede ejecutar ocn excito.                                           *
+***************************************************************************
+*/
 
 /*inicio de la funcion que muestra lo que tiene la pila*/
 void mostrarPILA()
