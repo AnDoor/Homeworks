@@ -1,15 +1,14 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LONG 3 //define el espacio prederteminado de la pila
+#define LONG 20 //define el espacio prederteminado de la pila
 
 //estructura de datos sobre la fecha y que va anidada a la estructura principal
 struct Fecha{
 	int dia,mes,anio;
 	
 };
-//estrcutura de datos principal de la pila
+//estrcutura de datos principal de la pila 
 struct persona {
 	int cedula; 
 	char nombre[50]; 
@@ -32,7 +31,6 @@ void menuMAIN(); //funcion que se encarga de mostrar un menu principal
 /*Funcion inicial*/
 int main (void){
 
-
 menuMAIN();
 
     return 0;
@@ -42,7 +40,7 @@ menuMAIN();
 void menuMAIN(){
 	int opcion;
 	do{
-	printf("\t\tMENU\n\t[1] CREAR LA PILA\n\t[2] APILAR\n\t[3] DESAPILAR\n\t[4] MOSTRAR LO QUE TIENE LA PILA\n\t[5] SALIR\n\t->");
+	printf("\t\t\t\tMENU\n\n\t\t\t[1] CREAR LA PILA\n\t\t\t[2] APILAR\n\t\t\t[3] DESAPILAR\n\t\t\t[4] MOSTRAR LO QUE TIENE LA PILA\n\t\t\t[5] SALIR\n\t\t\t->");
     scanf("%d",&opcion);
 	fflush(stdin);
 	system("cls");
@@ -74,22 +72,29 @@ void menuMAIN(){
 	}
 	default:{
 		puts("Opcion incorrecta");		
-		system("pause");
+		 system("pause");
 		system("cls");
 		break;
 	}
-}} while (opcion);
+	
+	}
+}while (opcion);
 } //Se termina la funcion del menu inicial
 
 /*inicio de la funcion que agrega un nuevo elemento a la pila*/
 void apilar(){
 	
 	char opc;
-	
+if(final == LONG){
+	puts("PILA LLENA!");
+	system("pause");
+				system("cls");
+} else{
+
 	if (final<=LONG){
 		do{
 			final++;
-			printf("\tINSERTE LA INFORMACION DE LA PERSONA\nNombre:");
+			puts("\tINSERTE LA INFORMACION DE LA PERSONA\nNombre:");
 			gets(pila[final].nombre);
 			printf("\nApellido:");
 			gets(pila[final].apellido);
@@ -108,7 +113,8 @@ void apilar(){
 			gets(pila[final].sexo);
 			printf("\n");
 			puts("Desea agregar otro elemento? [Y] [N]");
-			scanf("%c",&opc);
+			opc=getchar();
+			fflush(stdin);
 			if (final == LONG){
 				puts("\tPILA LLENA!");
 				
@@ -119,8 +125,9 @@ void apilar(){
 			}
 		} while(opc == 'Y' || opc == 'y');
 	}
-		system("pause");
+		 system("pause");
 				system("cls");
+				}
 }
 
 /*inicio de la funcion que crea la pila a base de 20 espacios libre*/
@@ -155,12 +162,13 @@ if ( final <LONG){
  		final++;
  
  puts("Desea limitar la pila?  [Y] [N]");
- scanf("%c",&opcion);
- 
+ opcion=getchar();
+ fflush(stdin);
       if (opcion == 'Y' || opcion == 'y'){
       	break;
 	  } else 
 	  continue;
+	  
         }
 } else{
 	
@@ -169,7 +177,7 @@ printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");
     
 }
 puts("la pila se ha llenado con excito!");
- 	system("pause");
+ system("pause");
 	system("cls");
 }//Fin de la funcion para crear la pila
 
@@ -184,31 +192,31 @@ void desapilar(){
 	} else {
 printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");	
 	}
-	system("pause");
+	 system("pause");
 	system("cls");
 }//fin de la funcion que elimina un elemento de la pila
 
 /*inicio de la funcion que muestra lo que tiene la pila*/
 void mostrarPILA(){
 	
-	int i; //variable de inicio e incremento del bucle for
+	int j; //variable de inicio e incremento del bucle for
 	
 	if (final ==-1){
 printf("\t      ERROR!\n\tLa pila esta vacia\n\tPor favor llenela\n");	
-			system("pause");
-				system("cls");
+			 system("pause");
+				
 	} else {
 		
-		for (i=0; i<final+1; i++){
-			printf("\t\t LUGAR DE LA PILA %d\n",i+1);
-			printf("Nombre: %s %s\n",pila[i].nombre,pila[i].apellido);
-			printf("Genero: %s\n",pila[i].sexo);
-			printf("Fecha de nacimiento: %d/%d/%d\n",pila[i].fecha_nacimiento.dia,pila[i].fecha_nacimiento.mes,pila[i].fecha_nacimiento.anio);
-			printf("Cedula: %d\n",pila[i].cedula);
-			printf("Numero telefonico: %lld\n",pila[i].telefono);
+		for (j=0; j<final+1; j++){
+			printf("\t\t [LUGAR DE LA PILA %d]\n",j+1);
+			printf("Nombre: %s %s\n",pila[j].nombre,pila[j].apellido);
+			printf("Genero: %s\n",pila[j].sexo);
+			printf("Fecha de nacimiento: %d/%d/%d\n",pila[j].fecha_nacimiento.dia,pila[j].fecha_nacimiento.mes,pila[j].fecha_nacimiento.anio);
+			printf("Cedula: %d\n",pila[j].cedula);
+			printf("Numero telefonico: %lld\n",pila[j].telefono);
 		}
-		system("pause");
-				system("cls");
+		 system("pause");
+				
 	}
-		
+		system("cls");
 }//fin de la funcion que muestra los elementos de la pila
