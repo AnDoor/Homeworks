@@ -217,7 +217,7 @@ int crearpilar()
 			printf("\tINSERTE LA INFORMACION DE LA PERSONA");
 			
 			/* Nombre */
-			puts("Nombre: ");
+			puts("\nNombre: ");
 			gets(pila[i].nombre);
 
 			/* Apellido */
@@ -272,9 +272,9 @@ int crearpilar()
 	else
 	{
 
-		printf("\t\tERROR!");
-		puts("\tLa pila esta vacia");
-		puts("\tPor favor llenela");
+		puts("\tERROR!");
+		puts("\t  La pila esta vacia");
+		puts("\t  Por favor llenela");
 		return -1;
 	}
 	puts("la pila se ha llenado con excito!");
@@ -304,9 +304,9 @@ void desapilar()
 	}
 	else
 	{
-		printf("\t\tERROR!");
-		puts("\tLa pila esta vacia");
-		puts("\tPor favor llenela");
+		puts("\tERROR!");
+		puts("\t  La pila esta vacia");
+		puts("\t  Por favor llenela");
 	}
 	system("pause");
 	system("cls");
@@ -332,9 +332,9 @@ void mostrarPILA()
 
 	if (final == -1)
 	{
-		printf("\t\tERROR!");
-		puts("\tLa pila esta vacia");
-		puts("\tPor favor llenela");
+		puts("\tERROR!");
+		puts("\t  La pila esta vacia");
+		puts("\t  Por favor llenela");
 		system("pause");
 	}
 	else
