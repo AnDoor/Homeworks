@@ -6,7 +6,7 @@ El programa puede realizar las siguientes funciones:
  -Decir si la pila llego a tu limite o si se encuentra vacia.
  -Eliminar un empleado (Se elimina el ultimo trabajador agregado a la pila).
  -Mostrar la cantidad de empleados y sus datos que fueron agregados a la pila.
- -Limitar la cantidad de la pila si la persona lo desea.
-
+ -Limitar la cantidad de la pila si la persona lo desea, ya sea, apilando o creando una pila nueva.
+ -Vaciar por completo la pila.
 
 
