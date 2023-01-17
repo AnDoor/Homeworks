@@ -28,11 +28,12 @@ int final = -1;
 struct persona pila[LONG];
 
 /*prototipo de funciones */
-int crearpilar();		// funcion que se encarga de crear una pila a base de su espacio prederteminado (LONG)
-void apilar();			// funcion que se encarga de agregar un elemnto a la pila
-void desapilar();		// funcion que se encarga de eliminar un elemento de la pila
+int crearpilar();// funcion que se encarga de crear una pila a base de su espacio prederteminado (LONG)
+void apilar();// funcion que se encarga de agregar un elemnto a la pila
+void desapilar();// funcion que se encarga de eliminar un elemento de la pila
 void mostrarPILA(); // funcion que se encarga de mostrar los elementos de la pila
-void menuMAIN();		// funcion que se encarga de mostrar un menu principal
+void menuMAIN();// funcion que se encarga de mostrar un menu principal
+void vaciarPILA(); //Funcion que se encarga de vaciar la pila por completo
 
 /*Funcion inicial*/
 int main(void)
@@ -89,11 +90,14 @@ void menuMAIN()
 		}
 		else if (opcion == 5)
 		{
-			exit(-1);
+			vaciarPILA();
+		}
+		else if(opcion == 6) {
+                        exit(-1);
 		}
 		else
 		{
-			puts("Opcion incorrecta");
+			puts("OPCION INCORRECTA!");
 			system("pause");
 			system("cls");
 		}
@@ -353,3 +357,42 @@ void mostrarPILA()
 	}
 	system("cls");
 } // fin de la funcion que muestra los elementos de la pila
+
+/*
+***************************************************************************
+*                              vaciarPILA                                 *
+***************************************************************************
+* Esta funcion se encarga de eliminar todos los elementos que contiene    *
+* actualmente la pila, si la pila ya estaba vacia y le damos a este opcion*
+* entonces nos saldra una advertencia de que la pila ya esta vacia.       *
+***************************************************************************
+*/
+
+//Inicio de la funcion vaciarPILA
+void vaciarPILA(){
+	
+	int k;//variable de inicializacion e incrementacion del bucle
+	
+	if (final == -1){
+		puts("\t    ADVERTENCIA!");
+		puts("\tNo se puede vaciar\n\tYa que ya esta vacia");
+		system("pause");
+		system("cls");
+	} else {
+		do{
+				for (k =0; k<=final;k++){
+			
+			final--;
+			pila[final-1];
+			if (final ==-1){
+				puts("la pila ya se ha vaciado con excito!");
+				system("pause");
+				system("cls");
+				
+			}
+		} 
+	
+		}while(final!=-1);
+	}
+	
+}//fin de la funcion vaciarPILA
