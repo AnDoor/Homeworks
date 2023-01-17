@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LONG 20 // define el espacio prederteminado de la pila
+#define LONG 1 // define el espacio prederteminado de la pila
 
 // estructura de datos sobre la fecha y que va anidada a la estructura principal
 struct Fecha
@@ -151,7 +151,7 @@ void apilar()
 				scanf("%d", &pila[final].cedula);
 
 				/* Fecha de nacimiento */
-				printf("\nFecha de nacimiento");
+				printf("\nFecha de nacimiento\n");
 
 				/* Dia */
 				puts("Dia: ");
@@ -172,7 +172,7 @@ void apilar()
 				/* Genero */
 				puts("\t\tGENERO");
 				puts("Masculino [M]\tFemenino [F]\tOtro [X]");
-				puts("->");
+				printf("->");
 
 				fflush(stdin);
 				gets(pila[final].sexo);
@@ -213,6 +213,13 @@ int crearpilar()
 	int i; // variable de inicio e incremento del bucle for
 	char opcion;
 
+if (final >= 0){
+	puts("\t\t LA PILA ESTA LLENA\n\t NO SE PUEDE CREAR UNA NUEVA PILA");
+	puts("\t\t DEBE VACIARLA!");
+	system("pause");
+	system("cls");
+	return -1;
+}
 	if (final < LONG)
 	{
 		puts("\t\tLA PILA SE PUEDE LLENAR");
@@ -277,7 +284,7 @@ int crearpilar()
 	else
 	{
 
-		puts("\tERROR!");
+		puts("\t\tERROR!");
 		puts("\t  La pila esta vacia");
 		puts("\t  Por favor llenela");
 		return -1;
@@ -309,7 +316,7 @@ void desapilar()
 	}
 	else
 	{
-		puts("\tERROR!");
+		puts("\t\tERROR!");
 		puts("\t  La pila esta vacia");
 		puts("\t  Por favor llenela");
 	}
@@ -337,7 +344,7 @@ void mostrarPILA()
 
 	if (final == -1)
 	{
-		puts("\tERROR!");
+		puts("\t\tERROR!");
 		puts("\t  La pila esta vacia");
 		puts("\t  Por favor llenela");
 		system("pause");
@@ -376,7 +383,7 @@ void vaciarPILA(){
 	
 	if (final == -1){
 		puts("\t    ADVERTENCIA!");
-		puts("\tNo se puede vaciar\n\tYa que ya esta vacia");
+		puts("\tNo se puede vaciar\n\t  Llene la pila!");
 		system("pause");
 		system("cls");
 	} else {
