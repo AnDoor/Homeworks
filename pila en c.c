@@ -49,8 +49,8 @@ int main(void)
 *                               menuMain                                  *
 ***************************************************************************
 * Esta funcion se encarga de mostrar el menu principal, donde da a elegir *
-* 5 acciones, crear pila, apilar, desapilar, mostrar contenido de la pila *
-* y salir del programa                                                    *
+* 6 acciones, crear pila, apilar, desapilar, mostrar contenido de la pila *
+* ,vaciar por completo la pila y salir del programa.                      *
 ***************************************************************************
 */
 
@@ -65,7 +65,8 @@ void menuMAIN()
 		puts("\t\t\t[2] APILAR");
 		puts("\t\t\t[3] DESAPILAR");
 		puts("\t\t\t[4] MOSTRAR LO QUE TIENE LA PILA");
-		puts("\t\t\t[5] SALIR");
+		puts("\t\t\t[5] VACIAR PILA POR COMPLETO");
+		puts("\t\t\t[6] Salir");
 		printf("\t\t\t->");
 
 		scanf("%d", &opcion);
