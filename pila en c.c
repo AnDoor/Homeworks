@@ -1,5 +1,5 @@
 /* Tecnica de programacion II / SECCION 02
-	Alumnos: Puerta Andrew 30957308
+	Alumnos: Puerta Andrew 30857308
          	 Balan Yorman  31782211
 */
 #include <stdio.h>
