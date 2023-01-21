@@ -34,6 +34,8 @@ void mostrarPILA();			 // funcion que se encarga de mostrar los elementos de la 
 void menuMAIN();				 // funcion que se encarga de mostrar un menu principal
 void vaciarPILA();			 // Funcion que se encarga de vaciar la pila por completo
 void longitud_de_pila(); // Muestra la cantidad de elementos que tiene la pila
+void pila_vacia();
+void pila_llena();
 
 /*Funcion inicial*/
 int main(void)
@@ -97,11 +99,11 @@ void menuMAIN()
 		}
 		else if (opcion == 6)
 		{
-			longitud_de_pila();
+			pila_vacia();
 		}
 		else if (opcion == 7)
 		{
-			longitud_de_pila();
+			pila_llena();
 		}
 		else if (opcion == 8)
 		{
@@ -163,7 +165,7 @@ void pila_vacia()
 * Avisa en pantalla si la pila esta llena o no                            *
 ***************************************************************************
 */
-void pila_vacia()
+void pila_llena()
 {
 	if (final == LONG)
 	{
