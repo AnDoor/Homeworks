@@ -1,11 +1,11 @@
 /* Tecnica de programacion II / SECCION 02
 	Alumnos: Puerta Andrew 30857308
-         	 Balan Yorman  31782211
+					 Balan Yorman  31782211
 */
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LONG 20 // define el espacio prederteminado de la pila
+#define LONG 2 // define el espacio prederteminado de la pila
 
 // estructura de datos sobre la fecha y que va anidada a la estructura principal
 struct Fecha
@@ -24,16 +24,16 @@ struct persona
 	long long int telefono;
 };
 
-int final = -1;
+int final = 0;
 struct persona pila[LONG];
 
-/*prototipo de funciones */
-int crearpilar();// funcion que se encarga de crear una pila a base de su espacio prederteminado (LONG)
-void apilar();// funcion que se encarga de agregar un elemnto a la pila
-void desapilar();// funcion que se encarga de eliminar un elemento de la pila
-void mostrarPILA(); // funcion que se encarga de mostrar los elementos de la pila
-void menuMAIN();// funcion que se encarga de mostrar un menu principal
-void vaciarPILA(); //Funcion que se encarga de vaciar la pila por completo
+/* prototipo de funciones */
+void apilar();					 // funcion que se encarga de agregar un elemnto a la pila
+void desapilar();				 // funcion que se encarga de eliminar un elemento de la pila
+void mostrarPILA();			 // funcion que se encarga de mostrar los elementos de la pila
+void menuMAIN();				 // funcion que se encarga de mostrar un menu principal
+void vaciarPILA();			 // Funcion que se encarga de vaciar la pila por completo
+void longitud_de_pila(); // Muestra la cantidad de elementos que tiene la pila
 
 /*Funcion inicial*/
 int main(void)
@@ -61,12 +61,14 @@ void menuMAIN()
 	do
 	{
 		puts("\t\t\t\tMENU");
-		puts("\t\t\t[1] CREAR LA PILA");
-		puts("\t\t\t[2] APILAR");
-		puts("\t\t\t[3] DESAPILAR");
-		puts("\t\t\t[4] MOSTRAR LO QUE TIENE LA PILA");
-		puts("\t\t\t[5] VACIAR PILA POR COMPLETO");
-		puts("\t\t\t[6] Salir");
+		puts("\t\t\t[1] APILAR");
+		puts("\t\t\t[2] DESAPILAR");
+		puts("\t\t\t[3] MOSTRAR LO QUE TIENE LA PILA");
+		puts("\t\t\t[4] VACIAR PILA POR COMPLETO");
+		puts("\t\t\t[5] LONGITUD DE PILA");
+		puts("\t\t\t[6] VERIFICAR SI ESTA VACIA");
+		puts("\t\t\t[7] VERIFICAR SI ESTA LLENA");
+		puts("\t\t\t[8] Salir");
 		printf("\t\t\t->");
 
 		scanf("%d", &opcion);
@@ -75,26 +77,35 @@ void menuMAIN()
 
 		if (opcion == 1)
 		{
-			crearpilar();
+			apilar();
 		}
 		else if (opcion == 2)
 		{
-			apilar();
+			desapilar();
 		}
 		else if (opcion == 3)
 		{
-			desapilar();
+			mostrarPILA();
 		}
 		else if (opcion == 4)
 		{
-			mostrarPILA();
+			vaciarPILA();
 		}
 		else if (opcion == 5)
 		{
-			vaciarPILA();
+			longitud_de_pila();
 		}
-		else if(opcion == 6) {
-                        exit(-1);
+		else if (opcion == 6)
+		{
+			longitud_de_pila();
+		}
+		else if (opcion == 7)
+		{
+			longitud_de_pila();
+		}
+		else if (opcion == 8)
+		{
+			exit(-1);
 		}
 		else
 		{
@@ -105,6 +116,70 @@ void menuMAIN()
 	} while (opcion);
 } // Se termina la funcion del menu inicial
 
+/*
+***************************************************************************
+*                          longitud_de_pila                               *
+***************************************************************************
+* Muestra la cantidad de elementos que contiene la pila                   *
+***************************************************************************
+*/
+void longitud_de_pila()
+{
+	system("cls");
+	printf("Hay %d elementos en la pila\n", final);
+	puts("Presiona cualquier tecla para continuar...");
+	getchar();
+}
+
+/*
+***************************************************************************
+*                                pila_vacia                               *
+***************************************************************************
+* Avisa en pantalla si la pila esta vacia o no                            *
+***************************************************************************
+*/
+void pila_vacia()
+{
+	if (final == 0)
+	{
+		system("cls");
+		puts("La pila esta vacia");
+		puts("Presiona cualquier tecla para continuar...");
+		getchar();
+	}
+	else
+	{
+		system("cls");
+		puts("La pila no esta vacia");
+		puts("Presiona cualquier tecla para continuar...");
+		getchar();
+	}
+}
+
+/*
+***************************************************************************
+*                                pila_llena                               *
+***************************************************************************
+* Avisa en pantalla si la pila esta llena o no                            *
+***************************************************************************
+*/
+void pila_vacia()
+{
+	if (final == LONG)
+	{
+		system("cls");
+		puts("La pila esta llena");
+		puts("Presiona cualquier tecla para continuar...");
+		getchar();
+	}
+	else
+	{
+		system("cls");
+		puts("La pila no esta llena");
+		puts("Presiona cualquier tecla para continuar...");
+		getchar();
+	}
+}
 
 /*
 ***************************************************************************
@@ -121,178 +196,70 @@ void apilar()
 {
 
 	char opc;
-	if (final == LONG)
+	do
 	{
-		puts("PILA LLENA!");
-		system("pause");
-		system("cls");
-	}
-	else
-	{
-
-		if (final <= LONG)
+		if (final >= LONG)
 		{
-			do
-			{
-				final++;
-
-				puts("\tINSERTE LA INFORMACION DE LA PERSONA");
-
-				/* Nombre de la persona */
-				puts("Nombre:");
-				gets(pila[final].nombre);
-
-				/* Apellido de la persona */
-				puts("Apellido:");
-				gets(pila[final].apellido);
-
-				/* Cedula de la persona */
-				puts("Cedula:");
-				scanf("%d", &pila[final].cedula);
-
-				/* Fecha de nacimiento */
-				printf("\nFecha de nacimiento\n");
-
-				/* Dia */
-				puts("Dia: ");
-				scanf("%d", &pila[final].fecha_nacimiento.dia);
-
-				/* Mes */
-				puts("Mes: ");
-				scanf("%d", &pila[final].fecha_nacimiento.mes);
-
-				/* Año */
-				puts("Anio: ");
-				scanf("%d", &pila[final].fecha_nacimiento.anio);
-
-				/* Numero telefonico */
-				puts("Numero telefonico: ");
-				scanf("%lld", &pila[final].telefono);
-
-				/* Genero */
-				puts("\t\tGENERO");
-				puts("Masculino [M]\tFemenino [F]\tOtro [X]");
-				printf("->");
-
-				fflush(stdin);
-				gets(pila[final].sexo);
-
-				printf("\n");
-				puts("Desea agregar otro elemento? [Y] [N]");
-				fflush(stdin);
-
-				opc = getchar();
-
-				fflush(stdin);
-				if (final == LONG)
-				{
-					puts("\tPILA LLENA!");
-
-					break;
-				}
-			} while (opc == 'Y' || opc == 'y');
+			puts("PILA LLENA!");
+			system("pause");
+			system("cls");
+			return;
 		}
-		system("pause");
-		system("cls");
-	}
-}
 
-/*
-***************************************************************************
-*                               crearpilar                                *
-***************************************************************************
-* Esta funcion se encarga de crear una nueva pila con un almacenamiento   *
-* prederteminado con un espacio de 20 espacios en la pila.Tambien pregunta*
-* si queremos limitar la cantidad de la pila o no y muestra un mensaje    *
-* cuando la pila se haya llenado.                                         *
-***************************************************************************
-*/
-int crearpilar()
-{
+		puts("\tINSERTE LA INFORMACION DE LA PERSONA");
 
-	int i; // variable de inicio e incremento del bucle for
-	char opcion;
+		/* Nombre de la persona */
+		puts("Nombre:");
+		gets(pila[final].nombre);
 
-if (final >= 0){
-	puts("\t\t LA PILA ESTA LLENA\n\t NO SE PUEDE CREAR UNA NUEVA PILA");
-	puts("\t\t DEBE VACIARLA!");
+		/* Apellido de la persona */
+		puts("Apellido:");
+		gets(pila[final].apellido);
+
+		/* Cedula de la persona */
+		puts("Cedula:");
+		scanf("%d", &pila[final].cedula);
+
+		/* Fecha de nacimiento */
+		printf("\nFecha de nacimiento\n");
+
+		/* Dia */
+		puts("Dia: ");
+		scanf("%d", &pila[final].fecha_nacimiento.dia);
+
+		/* Mes */
+		puts("Mes: ");
+		scanf("%d", &pila[final].fecha_nacimiento.mes);
+
+		/* Año */
+		puts("Anio: ");
+		scanf("%d", &pila[final].fecha_nacimiento.anio);
+
+		/* Numero telefonico */
+		puts("Numero telefonico: ");
+		scanf("%lld", &pila[final].telefono);
+
+		/* Genero */
+		puts("\t\tGENERO");
+		puts("Masculino [M]\tFemenino [F]\tOtro [X]");
+		printf("->");
+
+		fflush(stdin);
+		gets(pila[final].sexo);
+
+		printf("\n");
+		puts("Desea agregar otro elemento? [Y] [N]");
+		fflush(stdin);
+
+		opc = getchar();
+
+		fflush(stdin);
+
+		final++;
+	} while (opc == 'Y' || opc == 'y');
 	system("pause");
 	system("cls");
-	return -1;
 }
-	if (final < LONG)
-	{
-		puts("\t\tLA PILA SE PUEDE LLENAR");
-		puts("\t-------------------------------------------");
-		for (i = 0; i < LONG && final < LONG; i++)
-		{
-			printf("\tINSERTE LA INFORMACION DE LA PERSONA");
-			
-			/* Nombre */
-			puts("\nNombre: ");
-			gets(pila[i].nombre);
-
-			/* Apellido */
-			puts("Apellido: ");
-			gets(pila[i].apellido);
-
-			/* Cedula */
-			puts("Cedula: ");
-			scanf("%d", &pila[i].cedula);
-
-			/* Fecha de Nacimiento */
-			puts("Fecha de nacimiento");
-			
-			/* Dia */
-			puts("Dia: ");
-			scanf("%d", &pila[i].fecha_nacimiento.dia);
-
-			/* Mes */
-			puts("Mes: ");
-			scanf("%d", &pila[i].fecha_nacimiento.mes);
-
-			/* Año */
-			puts("Anio: ");
-			scanf("%d", &pila[i].fecha_nacimiento.anio);
-
-			/* Numero Telefonico */
-			puts("Numero telefonico: ");
-			scanf("%lld", &pila[i].telefono);
-
-			/* Genero */
-			puts("\t\tGENERO");
-			puts("Masculino [M]\tFemenino [F]\tOtro [X]");
-			puts("->");
-
-			fflush(stdin);
-			gets(pila[i].sexo);
-			fflush(stdin);
-			printf("\n");
-
-			final++;
-
-			puts("Desea limitar la pila?  [Y] [N]");
-			fflush(stdin);
-			opcion = getchar();
-			fflush(stdin);
-			if (opcion == 'Y' || opcion == 'y')
-			{
-				break;
-			}
-		}
-	}
-	else
-	{
-
-		puts("\t\tERROR!");
-		puts("\t  La pila esta vacia");
-		puts("\t  Por favor llenela");
-		return -1;
-	}
-	puts("la pila se ha llenado con excito!");
-	system("pause");
-	system("cls");
-} // Fin de la funcion para crear la pila
 
 /*
 ***************************************************************************
@@ -308,11 +275,11 @@ if (final >= 0){
 void desapilar()
 {
 
-	if (final >= 0)
+	if (final > 0)
 	{
-		final--;
 		puts("se ha eliminado un elemento de la pila");
-		printf("el usuario eliminado fue %s\n", pila[final + 1].nombre);
+		printf("el usuario eliminado fue %s\n", pila[final].nombre);
+		final--;
 	}
 	else
 	{
@@ -342,7 +309,7 @@ void mostrarPILA()
 
 	int j; // variable de inicio e incremento del bucle for
 
-	if (final == -1)
+	if (final == 0)
 	{
 		puts("\t\tERROR!");
 		puts("\t  La pila esta vacia");
@@ -352,7 +319,7 @@ void mostrarPILA()
 	else
 	{
 
-		for (j = 0; j < final + 1; j++)
+		for (j = 0; j < final; j++)
 		{
 			printf("\t\t [LUGAR DE LA PILA %d]\n", j + 1);
 			printf("Nombre: %s %s\n", pila[j].nombre, pila[j].apellido);
@@ -376,31 +343,25 @@ void mostrarPILA()
 ***************************************************************************
 */
 
-//Inicio de la funcion vaciarPILA
-void vaciarPILA(){
-	
-	int k;//variable de inicializacion e incrementacion del bucle
-	
-	if (final == -1){
+// Inicio de la funcion vaciarPILA
+void vaciarPILA()
+{
+
+	int k; // variable de inicializacion e incrementacion del bucle
+
+	if (final == 0)
+	{
 		puts("\t    ADVERTENCIA!");
 		puts("\tNo se puede vaciar\n\t  Llene la pila!");
 		system("pause");
 		system("cls");
-	} else {
-		do{
-				for (k =0; k<=final;k++){
-			
-			final--;
-			pila[final-1];
-			if (final ==-1){
-				puts("la pila ya se ha vaciado con excito!");
-				system("pause");
-				system("cls");
-				
-			}
-		} 
-	
-		}while(final!=-1);
 	}
-	
-}//fin de la funcion vaciarPILA
+	else
+	{
+		final = 0;
+		puts("la pila ya se ha vaciado con excito!");
+		system("pause");
+		system("cls");
+	}
+
+} // fin de la funcion vaciarPILA
