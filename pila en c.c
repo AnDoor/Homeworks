@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define LONG 2 // define el espacio prederteminado de la pila
+#define LONG 20 // define el espacio prederteminado de la pila
 
 // estructura de datos sobre la fecha y que va anidada a la estructura principal
 struct Fecha
